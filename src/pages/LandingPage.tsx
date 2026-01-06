@@ -1,5 +1,6 @@
 // LandingPage.tsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Menu,
   X,
@@ -66,12 +67,12 @@ const LandingPage: React.FC = () => {
                   {item}
                 </a>
               ))} */}
-              <a
-                href="/signin"
+              <Link
+                to="/signin"
                 className="rounded-lg bg-[var(--brand-500)] px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-[var(--brand-600)] hover:shadow-md"
               >
                 Login
-              </a>
+              </Link>
             </nav>
 
             {/* Mobile Menu Button */}
@@ -103,13 +104,13 @@ const LandingPage: React.FC = () => {
                     </a>
                   )
                 )} */}
-                <a
-                  href="/signin"
+                <Link
+                  to="/signin"
                   className="rounded-lg bg-[var(--brand-500)] px-4 py-2 text-center text-sm font-semibold text-white transition-all hover:bg-[var(--brand-600)]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           )}

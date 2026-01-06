@@ -1,4 +1,11 @@
-import { HashRouter as Router, Routes, Route } from "react-router";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router";
+import { useEffect } from "react";
 import SignIn from "./pages/AuthPages/SignIn";
 // import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
@@ -56,160 +63,176 @@ import TrainingRecordForm from "./pages/MedicalHistory/Form/TrainingRecordForm";
 import SicknessRecord from "./pages/MedicalHistory/SicknessRecord";
 import SicknessRecordForm from "./pages/MedicalHistory/Form/SicknessRecordForm";
 import DataManagementPage from "./pages/DataMangement/DataManagementPage";
+import { useAuthStore } from "./store/useAuthStore";
 
 export default function App() {
   // useCreateCountries();
   return (
     <>
       <Router>
-        <ScrollToTop />
-        <Routes>
-          {/* Redirect root path to LandingPage */}
-          <Route path="/" element={<LandingPage />} />
-          {/* Public Routes */}
-          <Route path="/signin" element={<SignIn />} />
+        <AppContent />
+      </Router>
+    </>
+  );
+}
 
-          {/* <Route path="/signup" element={<SignUp />} /> */}
-          {/* Dashboard Layout */}
-          <Route element={<AppLayout />}>
-            <Route element={<ProtectedRoute />}>
-              <Route index path="/dashboard" element={<Home />} />
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const token = useAuthStore((state) => state.token);
 
-              {/*Adminstration */}
-              <Route path="/activity-logs" element={<ActivityLog />} />
-              <Route path="/recycle-bin" element={<RecycleBin />} />
+  useEffect(() => {
+    if (!token && location.pathname !== "/signin") {
+      navigate("/", { replace: true });
+    }
+  }, [token, navigate, location.pathname]);
 
-              {/*Data import/export routes*/}
-              <Route path="/data" element={<DataManagementPage />} />
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Redirect root path to LandingPage */}
+        <Route path="/" element={<LandingPage />} />
+        {/* Public Routes */}
+        <Route path="/signin" element={<SignIn />} />
 
-              {/************************/}
+        {/* <Route path="/signup" element={<SignUp />} /> */}
+        {/* Dashboard Layout */}
+        <Route element={<AppLayout />}>
+          <Route element={<ProtectedRoute />}>
+            <Route index path="/dashboard" element={<Home />} />
 
-              {/* Others Page */}
-              {/* <Route path="/profile" element={<UserProfiles />} /> */}
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/blank" element={<Blank />} />
+            {/*Adminstration */}
+            <Route path="/activity-logs" element={<ActivityLog />} />
+            <Route path="/recycle-bin" element={<RecycleBin />} />
 
-              {/* microchip */}
-              <Route path="/micro-chip" element={<MicrochipTracking />} />
+            {/*Data import/export routes*/}
+            <Route path="/data" element={<DataManagementPage />} />
 
-              {/* Dog Management */}
-              <Route path="/create-city" element={<CreateCity />} />
-              <Route path="/cities" element={<CityList />} />
+            {/************************/}
 
-              <Route path="/create-country" element={<CreateCountry />} />
-              <Route path="/countries" element={<CountryList />} />
+            {/* Others Page */}
+            {/* <Route path="/profile" element={<UserProfiles />} /> */}
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/blank" element={<Blank />} />
 
-              <Route path="/countries" element={<CountryList />} />
-              {/* microchip */}
-              <Route path="/microchip" element={<Microchip />} />
-              {/* microchip */}
-              <Route path="/create/microchip" element={<CreateMicrochip />} />
+            {/* microchip */}
+            <Route path="/micro-chip" element={<MicrochipTracking />} />
 
-              {/* Forms */}
-              <Route path="/form-elements" element={<FormElements />} />
+            {/* Dog Management */}
+            <Route path="/create-city" element={<CreateCity />} />
+            <Route path="/cities" element={<CityList />} />
 
-              {/* Tables */}
-              <Route path="/basic-tables" element={<BasicTables />} />
-              <Route path="/change-password" element={<ChangePassword />} />
+            <Route path="/create-country" element={<CreateCountry />} />
+            <Route path="/countries" element={<CountryList />} />
 
-              {/* Dogs Category */}
-              <Route path="/dog-category-list" element={<DogCategory />} />
-              {/* <Route path="/dog-categories/create" element={<DogCategoryCreate />} /> */}
-              <Route
-                path="/dog/create/category"
-                element={<DogCategoryCreate />}
-              />
+            <Route path="/countries" element={<CountryList />} />
+            {/* microchip */}
+            <Route path="/microchip" element={<Microchip />} />
+            {/* microchip */}
+            <Route path="/create/microchip" element={<CreateMicrochip />} />
 
-              {/* Dogs Breed */}
-              <Route path="/dog-breed" element={<DogBreed />} />
-              <Route path="/dog/create/breed" element={<DogBreedCreate />} />
+            {/* Forms */}
+            <Route path="/form-elements" element={<FormElements />} />
 
-              <Route
-                path="/stud-certificate"
-                element={<StudCertificateList />}
-              />
-              <Route
-                path="/create-stud-certificate"
-                element={<CreateStudCertificate />}
-              />
+            {/* Tables */}
+            <Route path="/basic-tables" element={<BasicTables />} />
+            <Route path="/change-password" element={<ChangePassword />} />
 
-              {/* Litters
+            {/* Dogs Category */}
+            <Route path="/dog-category-list" element={<DogCategory />} />
+            {/* <Route path="/dog-categories/create" element={<DogCategoryCreate />} /> */}
+            <Route
+              path="/dog/create/category"
+              element={<DogCategoryCreate />}
+            />
+
+            {/* Dogs Breed */}
+            <Route path="/dog-breed" element={<DogBreed />} />
+            <Route path="/dog/create/breed" element={<DogBreedCreate />} />
+
+            <Route path="/stud-certificate" element={<StudCertificateList />} />
+            <Route
+              path="/create-stud-certificate"
+              element={<CreateStudCertificate />}
+            />
+
+            {/* Litters
               <Route
                 path="/litters-reigstration-request"
                 element={<LittersRegRequest />}
               /> */}
-              <Route
-                path="/litters-inspection-request-list"
-                element={<LittersInspectionRequest />}
-              />
-              <Route
-                path="/litter-inspection"
-                element={<LitterInspectionForm />}
-              />
-              <Route
-                path="/litter-registration"
-                element={<LitterRegistrationForm />}
-              />
-              <Route path="/assign-microchip" element={<AssignMicrochip />} />
+            <Route
+              path="/litters-inspection-request-list"
+              element={<LittersInspectionRequest />}
+            />
+            <Route
+              path="/litter-inspection"
+              element={<LitterInspectionForm />}
+            />
+            <Route
+              path="/litter-registration"
+              element={<LitterRegistrationForm />}
+            />
+            <Route path="/assign-microchip" element={<AssignMicrochip />} />
 
-              {/* pedigree Tree */}
-              <Route path="/database-view" element={<DatabaseView />} />
+            {/* pedigree Tree */}
+            <Route path="/database-view" element={<DatabaseView />} />
 
-              {/* pedigree Tree */}
-              {/* <Route path="/progeny-data" element={<Progeny />} /> */}
+            {/* pedigree Tree */}
+            {/* <Route path="/progeny-data" element={<Progeny />} /> */}
 
-              {/* Medication */}
-              <Route path="/pharmacy-medication" element={<Medication />} />
+            {/* Medication */}
+            <Route path="/pharmacy-medication" element={<Medication />} />
 
-              {/* siblings */}
-              {/* <Route path="/siblings-data" element={<DogList />} /> */}
+            {/* siblings */}
+            {/* <Route path="/siblings-data" element={<DogList />} /> */}
 
-              {/* Medical Record of every dogs */}
-              <Route path="/vaccination-view" element={<VacinationRecord />} />
-              <Route path="/deworming-view" element={<DewormingRecord />} />
-              <Route path="/training-view" element={<TrainingRecord />} />
-              <Route path="/prophylaxis-view" element={<Prophylaxis />} />
-              <Route path="/sickness-view" element={<SicknessRecord />} />
+            {/* Medical Record of every dogs */}
+            <Route path="/vaccination-view" element={<VacinationRecord />} />
+            <Route path="/deworming-view" element={<DewormingRecord />} />
+            <Route path="/training-view" element={<TrainingRecord />} />
+            <Route path="/prophylaxis-view" element={<Prophylaxis />} />
+            <Route path="/sickness-view" element={<SicknessRecord />} />
 
-              {/* Medical Form */}
-              <Route
-                path="/create-vaccination-record"
-                element={<VaccinationRecordForm />}
-              />
-              <Route
-                path="/create-deworming-record"
-                element={<DewormingRecordForm />}
-              />
-              <Route
-                path="/create-sickness-record"
-                element={<SicknessRecordForm />}
-              />
-              <Route path="/create-prophylaxis" element={<ProphylaxisList />} />
-              <Route
-                path="/create-training-record"
-                element={<TrainingRecordForm />}
-              />
+            {/* Medical Form */}
+            <Route
+              path="/create-vaccination-record"
+              element={<VaccinationRecordForm />}
+            />
+            <Route
+              path="/create-deworming-record"
+              element={<DewormingRecordForm />}
+            />
+            <Route
+              path="/create-sickness-record"
+              element={<SicknessRecordForm />}
+            />
+            <Route path="/create-prophylaxis" element={<ProphylaxisList />} />
+            <Route
+              path="/create-training-record"
+              element={<TrainingRecordForm />}
+            />
 
-              {/* Dog Breed */}
+            {/* Dog Breed */}
 
-              {/* Ui Elements */}
-              <Route path="/alerts" element={<Alerts />} />
-              <Route path="/avatars" element={<Avatars />} />
-              <Route path="/badge" element={<Badges />} />
-              <Route path="/buttons" element={<Buttons />} />
-              <Route path="/images" element={<Images />} />
-              <Route path="/videos" element={<Videos />} />
-              {/* <Route path="/pedigreeTree" element={<PedigreeTree/>} /> */}
+            {/* Ui Elements */}
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/avatars" element={<Avatars />} />
+            <Route path="/badge" element={<Badges />} />
+            <Route path="/buttons" element={<Buttons />} />
+            <Route path="/images" element={<Images />} />
+            <Route path="/videos" element={<Videos />} />
+            {/* <Route path="/pedigreeTree" element={<PedigreeTree/>} /> */}
 
-              {/* Charts */}
-              <Route path="/line-chart" element={<LineChart />} />
-              <Route path="/bar-chart" element={<BarChart />} />
-            </Route>
+            {/* Charts */}
+            <Route path="/line-chart" element={<LineChart />} />
+            <Route path="/bar-chart" element={<BarChart />} />
           </Route>
-          {/* Fallback Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+        </Route>
+        {/* Fallback Route */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

@@ -1,4 +1,4 @@
-export const BASE_URL = "http://127.0.0.1:3000/api";
+export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const api_keys = {
   // USER LOGIN
@@ -19,8 +19,8 @@ export const api_keys = {
 
   // Microchipp API Keys
   ADD_MICROCHIP: "microchip-add",
-  GET_ALL_MICROCHIPS: '/microchip-all',
-  GET_ALL_NOT_ASSIGN_MICROCHIPS: '/unassign-microchip-all',
+  GET_ALL_MICROCHIPS: "/microchip-all",
+  GET_ALL_NOT_ASSIGN_MICROCHIPS: "/unassign-microchip-all",
   DELETE_MICROCHIP: "microchip-delete",
   UPDATE_MICROCHIP: "update-microchip",
   // Breed API Keys
@@ -81,7 +81,6 @@ export const api_keys = {
   TRANSFERRED_DOGS: "transferred-dog-list",
   BULLDOGS: "bulldogd-list",
 
-
   // Medical History of dogs
   // VACCINATION
   ADD_VACCINATION: "add-vaccinations",
@@ -104,7 +103,7 @@ export const api_keys = {
   UPDATE_DEWORMING: "update-deworming",
   DELETE_DEWORMING: "deete-deworming",
 
-  // training 
+  // training
 
   GET_ALL_TRAINING: "get-all-training",
   GET_TRAINING_BY_ID: "get-one-training",
@@ -121,9 +120,7 @@ export const api_keys = {
   DELETE_SICKNESS: "delete-sickness",
 };
 
-
 export const endpoint = {
-
   //Dashboard
   DASHBOARD_STATE: `${BASE_URL}/dashboard/state`,
   // SigIn
@@ -133,7 +130,8 @@ export const endpoint = {
 
   //Dog ENDPIONT
   GET_DOGS: `${BASE_URL}/dog`,
-  DOGS_FILTER: (breedId: string, cityId: string) => `${BASE_URL}/dog/filter/view?breedId=${breedId}&cityId=${cityId}`,
+  DOGS_FILTER: (breedId: string, cityId: string) =>
+    `${BASE_URL}/dog/filter/view?breedId=${breedId}&cityId=${cityId}`,
   GET_DOG_BY_ID: (id: string) => `${BASE_URL}/dog/${id}`,
   ADD_DOG: `${BASE_URL}/dog`,
   UPDATE_DOG: (id: string) => `${BASE_URL}/dog/${id}`,
@@ -170,7 +168,8 @@ export const endpoint = {
   // GEt All Cities
   CREATE_CITY: `${BASE_URL}/cities/`,
   GET_CITIES: `${BASE_URL}/cities`,
-  GET_CITIES_COUNTRY_ID: (countryId: string) => `${BASE_URL}/cities/get/dropdown/${countryId}`,
+  GET_CITIES_COUNTRY_ID: (countryId: string) =>
+    `${BASE_URL}/cities/get/dropdown/${countryId}`,
   UPDATE_CITY: (cityId: string) => `${BASE_URL}/cities/${cityId}`,
 
   //Get All Stud Certificate
@@ -194,11 +193,11 @@ export const endpoint = {
 
   //Virtuall Breeding
   VIRTUAL_BREEDING_CHECKED: `${BASE_URL}/stud-certificates/virtual/breeding`,
-  DASHBOARD_WHELPING_STATE: (selectedYear: string) => `${BASE_URL}/dashboard/monthly/whelping/?year=${selectedYear}`,
+  DASHBOARD_WHELPING_STATE: (selectedYear: string) =>
+    `${BASE_URL}/dashboard/monthly/whelping/?year=${selectedYear}`,
 
-
-  DASHBOARD_DEATH_STATE: (selectedYear: string) => `${BASE_URL}/dashboard/monthly/deaths/?year=${selectedYear}`,
-
+  DASHBOARD_DEATH_STATE: (selectedYear: string) =>
+    `${BASE_URL}/dashboard/monthly/deaths/?year=${selectedYear}`,
 
   // Dog List by Breed
   GERMANSHEPHERD_LIST: `${BASE_URL}/dog/germanshepherd/view`,
@@ -212,8 +211,6 @@ export const endpoint = {
   DEAD_DOGS: `${BASE_URL}/dog/dead/view`,
   CND_DOG: `${BASE_URL}/dog/cnd/view`,
   CNS_DOG: `${BASE_URL}/dog/cns/view`,
-
-
 
   // Medical Histoy of Dog
 
@@ -245,7 +242,6 @@ export const endpoint = {
   GET_TRAINING_BY_ID: (id: string) => `${BASE_URL}/training/${id}`,
   DELETE_TRAINING: (id: string) => `${BASE_URL}/training/${id}`,
 
-
   // Sickness
 
   ADD_SICKNESS: `${BASE_URL}/sickness`,
@@ -253,5 +249,4 @@ export const endpoint = {
   GET_ALL_SICKNESS: `${BASE_URL}/sickness`,
   GET_SICKNESS_BY_ID: (id: string) => `${BASE_URL}/sickness/${id}`,
   DELETE_SICKNESS: (id: string) => `${BASE_URL}/sickness/${id}`,
-
 };

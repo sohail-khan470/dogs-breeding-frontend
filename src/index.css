@@ -840,3 +840,91 @@ span.flatpickr-weekday,
     background-color: #1d2939 !important;
     color: #f9fafb !important;
 }
+
+/**some sample styles**/
+
+
+/* Add these to your index.css file if not already present */
+:root {
+  /* Primary Brand Colors */
+  --brand-25: #f2f7ff;
+  --brand-50: #ecf3ff;
+  --brand-100: #dde9ff;
+  --brand-200: #c2d6ff;
+  --brand-300: #9cb9ff;
+  --brand-400: #7592ff;
+  --brand-500: #465fff;
+  --brand-600: #3641f5;
+  --brand-700: #2a31d8;
+  --brand-800: #252dae;
+  --brand-900: #262e89;
+  --brand-950: #161950;
+
+  /* Gray Scale */
+  --gray-25: #fcfcfd;
+  --gray-50: #f9fafb;
+  --gray-100: #f2f4f7;
+  --gray-200: #e4e7ec;
+  --gray-300: #d0d5dd;
+  --gray-400: #98a2b3;
+  --gray-500: #667085;
+  --gray-600: #475467;
+  --gray-700: #344054;
+  --gray-800: #1d2939;
+  --gray-900: #101828;
+  --gray-950: #0c111d;
+  --gray-dark: #1a2231;
+
+  /* Accent Colors */
+  --success-50: #f6fef9;
+  --success-500: #12b76a;
+  --success-600: #039855;
+  --success-700: #027a48;
+  
+  --error-500: #f04438;
+  --warning-500: #f79009;
+  --orange-50: #fffaf5;
+  --orange-500: #fb6514;
+  --orange-600: #ec5a10;
+  --orange-700: #c94c0e;
+  
+  --theme-pink: #ee46bc;
+  --theme-purple: #7a5af8;
+
+  /* Base Colors */
+  --white: #ffffff;
+  --black: #101828;
+}
+
+/* Container utility */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}

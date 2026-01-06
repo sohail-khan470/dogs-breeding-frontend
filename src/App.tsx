@@ -2,6 +2,7 @@ import { HashRouter as Router, Routes, Route } from "react-router";
 import SignIn from "./pages/AuthPages/SignIn";
 // import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
+import LandingPage from "./pages/LandingPage";
 // import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
 import Images from "./pages/UiElements/Images";
@@ -63,8 +64,8 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          {/* Redirect root path to /signin */}
-          <Route path="/" element={<SignIn />} />
+          {/* Redirect root path to LandingPage */}
+          <Route path="/" element={<LandingPage />} />
           {/* Public Routes */}
           <Route path="/signin" element={<SignIn />} />
 

@@ -20,6 +20,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import dogImage from "../assets/images/dog.jpg";
 
 const LandingPage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -197,7 +198,7 @@ const LandingPage: React.FC = () => {
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  src={dogImage}
                   alt="Professional dog breeder with champion dogs"
                   className="h-full w-full object-cover"
                 />

@@ -4,7 +4,6 @@ import {
   Menu,
   X,
   PawPrint,
-  ChevronRight,
   Shield,
   BarChart3,
   Users,
